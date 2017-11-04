@@ -19,7 +19,12 @@ find_package(OpenCV REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
 find_package(GLUT REQUIRED)
-find_package(Eigen3 REQUIRED)
+#find_package(Eigen3 REQUIRED)
+#cmake 3 will not find Eigen3 so used PkgConfig
+find_package( PkgConfig )
+pkg_check_modules( EIGEN3 REQUIRED eigen3 )
+include_directories( ${EIGEN3_INCLUDE_DIRS} )
+
 find_package(X11 REQUIRED)
 find_package(Threads REQUIRED)
 #find_package(TinyXML REQUIRED)

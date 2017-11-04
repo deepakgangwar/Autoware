@@ -25,7 +25,12 @@ find_package (BLAS REQUIRED)
 find_package (LAPACK REQUIRED)
 find_package (GLUT REQUIRED)
 find_package (OpenMP)
-find_package (Eigen3 REQUIRED)
+#find_package (Eigen3 REQUIRED)
+#cmake 3 and eigen issue
+find_package( PkgConfig )
+pkg_check_modules( EIGEN3 REQUIRED eigen3 )
+include_directories( ${EIGEN3_INCLUDE_DIRS} )
+
 find_package (PCL 1.7 REQUIRED COMPONENTS common octree)
 find_package (PythonLibs REQUIRED)
 find_package (X11 REQUIRED)
